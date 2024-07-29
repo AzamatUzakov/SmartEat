@@ -1,0 +1,178 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 450px;
+}
+
+h1,
+h2 {
+    color: #333333;
+}
+
+.plan_txt {
+    font-size: 18px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.male_box {
+    display: flex;
+    gap: 40px;
+}
+
+.height_age_weight_box {
+    display: flex;
+}
+
+.age_height_weight {
+    font-size: 14px;
+    color: #648179;
+    font-weight: 400;
+}
+
+.age_height_weight input {
+    width: 70%;
+    border-radius: 7px;
+    border: 1px solid #648179;
+    font-size: 14px;
+    color: #648179;
+    font-weight: 400;
+}
+
+.goal_plan_level_assessment {
+    font-size: 14px;
+    color: #648179;
+    font-weight: 400;
+}
+
+.goal_plan_level_assessment select {
+    width: 100% !important;
+    border-radius: 7px;
+    border: 1px solid #648179;
+    font-size: 14px;
+    color: #648179;
+    font-weight: 400;
+}
+
+
+.result_container{
+    margin: 0 auto;
+    width: 450px;
+    background-color: #ebf5ff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.result_container h2{
+    font-size: 18px
+}
+.lvl{
+font-size: 17px;
+}
+.level_p, .workout_p, .target_p{
+    margin-top: -14px;
+    font-size: 15px;
+}
+.bju_blocks, .humman_info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 17px;
+}
+.result_btn{
+    width: 50%;
+    text-align:center;
+    margin: 0 auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+
+.edit_form_cont{
+    margin: 0 auto;
+    width: 450px;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.edit_box, .edit_two_box{
+    display: flex;
+    align-items: center;
+
+}
+.kaloriy__ input{
+    max-width:100%;
+    border-radius: 7px;
+    border: 1px solid #648179;
+    font-size: 14px;
+    color: #648179;
+    padding: 8px;
+    font-weight: 400;
+}
+.edit_box input, .edit_two_box input{
+    width: 70%;
+    border-radius: 7px;
+    border: 1px solid #648179;
+    font-size: 14px;
+    color: #648179;
+    padding: 8px;
+    font-weight: 400;
+    margin-top: 3px;
+}
+form input,
+form select,
+button {
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#results,
+#editForm {
+    margin-top: 20px;
+}
+
+#editForm label {
+    display: block;
+    margin-bottom: 10px;
+}

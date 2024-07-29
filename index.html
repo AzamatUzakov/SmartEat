@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Счетчик БЖУ</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="plan_txt">ДАННЫЕ ДЛЯ ПЛАНА</h1>
+        <form id="bjuForm">
+            <div class="male_box">
+                <label>
+                    <input type="radio" name="gender" value="male" required> Мужчина
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female" required> Женщина
+                </label>
+            </div>
+            <br>
+            <div class="height_age_weight_box">
+                <label class="age_height_weight">Рост, см <br> <input type="number" id="height" required></label>
+                <label class="age_height_weight">Вес, кг <br> <input type="number" id="weight" required></label>
+                <label class="age_height_weight">Возраст, лет <br> <input type="number" id="age" required></label>
+            </div>
+            <label class="goal_plan_level_assessment">Цель: <br>
+                <select id="goal" required>
+                    <option value="maintain">Поддерживать свою форму</option>
+                    <option value="lose">Похудеть (убрать жир)</option>
+                    <option value="gain">Набрать мышечную массу</option>
+                </select>
+            </label>
+            <label class="goal_plan_level_assessment">Планируемое количество тренировок в неделю: <br>
+                <select id="workoutsPerWeek" required>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </label>
+            <label class="goal_plan_level_assessment">Оцените ваш уровень физической подготовки: <br>
+                <select id="fitnessLevel" required>
+                    <option value="beginner">Новичок</option>
+                    <option value="intermediate">Тренированный</option>
+                    <option value="advanced">Спортсмен</option>
+                </select>
+            </label>
+            <label class="goal_plan_level_assessment">Уровень активности: <br>
+                <select id="activityLevel" required>
+                    <option value="low">Сидячая работа, мало подвижный образ жизни</option>
+                    <option value="medium">Сидячая работа, среднеактивный образ жизни</option>
+                    <option value="high">Работа связана с физической нагрузкой, очень активный образ жизни</option>
+                </select>
+            </label>
+            <button class="result_btn" type="button" onclick="calculateBJU()">Рассчитать</button>
+        </form>
+    </div>
+
+    <div class="result_container">
+        <div id="results">
+            <h2>Параметры плана</h2>
+            <div class="level_active lvl">
+                <p>Уровень физической активности:</p>
+                <p class="level_p"><b>Сидячая работа, малоподвижный образ жизни</b></p>
+            </div>
+            <div class="workout_box lvl">
+                <p>Тренировки:</p>
+                <p class="workout_p"><b>отсутствуют</b></p>
+            </div>
+            <div class="target_box lvl">
+                <p>Цель:</p>
+                <p class="target_p"><b>Похудеть (убрать жир)</b></p>
+            </div>
+            <div class="humman_info">
+                <p id="height_hum"></p>
+                <p id="weight_hum"></p>
+                <p id="age_hum"></p>
+                <p id="male_hum"></p>
+            </div>
+            <div class="bju_blocks">
+                <p id="proteins"></p>
+                <p id="fats"></p>
+                <p id="carbs"></p>
+                <p id="calories"></p>
+            </div>
+            <button type="button" onclick="showEditForm()">Редактировать БЖУ</button>
+        </div>
+    </div>
+
+    <div class="edit_form_cont">
+        <div id="editForm" style="display:none;">
+            <h2>Редактирование БЖУ</h2>
+            <div class="edit_box">
+                <label>Белки, гр: <br><input type="number" id="editProteins" ></label>
+                <label>Жиры, гр: <br><input type="number" id="editFats" ></label>
+                <label>Углеводы, гр: <br><input type="number" id="editCarbs" ></label> <br>
+            </div>
+            <label class="kaloriy__">Калорийность плана, ккал: <br><input type="number" id="editCalories" ></label>
+            <div class="edit_two_box">
+                <label class="belki_procent">Белки, %: <br><input type="number" id="editProteinPercentage" min="0" max="100"></label> <br>
+                <label class="jiri_procent">Жиры, %: <br><input type="number" id="editFatPercentage" min="0" max="100"></label>
+                <label class="uglevodi_procent">Углеводы, %: <br><input type="number" id="editCarbPercentage" min="0" max="100"></label>
+            </div>
+            <button type="button" id="saveEditedBJU">Сохранить</button>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
