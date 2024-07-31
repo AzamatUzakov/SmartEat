@@ -59,6 +59,19 @@
                     <option value="high">Работа связана с физической нагрузкой, очень активный образ жизни</option>
                 </select>
             </label>
+            <div id="pregnancyStatusContainer" class="goal_plan_level_assessment" style="display:none;">
+                Вы беременная или кормящая
+
+                <select id="pregnancyStatus">
+                    <option value="none">Не беременная / не кормящая</option>
+                    <option value="pregnant">Беременная</option>
+                    <option value="breastfeeding_1_6">Кормящая (1-6 мес)</option>
+                    <option value="breastfeeding_7_12">Кормящая (7-12 мес)</option>
+                </select>
+            </div>
+            
+            
+            
             <button class="result_btn" type="button" onclick="calculateBJU()">Рассчитать</button>
         </form>
     </div>
@@ -98,17 +111,17 @@
         <div id="editForm" style="display:none;">
             <h2>Редактирование БЖУ</h2>
             <div class="edit_box">
-                <label>Белки, гр: <br><input type="number" id="editProteins" ></label>
-                <label>Жиры, гр: <br><input type="number" id="editFats" ></label>
-                <label>Углеводы, гр: <br><input type="number" id="editCarbs" ></label> <br>
+                <label>Белки, гр   <br><input type="number" id="editProteinsPerKg"></label>
+                <label>Жиры, гр  <br><input type="number" id="editFatsPerKg"></label>
+                <label>Углеводы, гр  <br><input type="number" id="editCarbsPerKg"></label>
             </div>
-            <label class="kaloriy__">Калорийность плана, ккал: <br><input type="number" id="editCalories" ></label>
+            <label class="kaloriy__">Калорийность плана, ккал: <br><input type="number" id="editCalories" /></label>
             <div class="edit_two_box">
-                <label class="belki_procent">Белки, %: <br><input type="number" id="editProteinPercentage" min="0" max="100"></label> <br>
-                <label class="jiri_procent">Жиры, %: <br><input type="number" id="editFatPercentage" min="0" max="100"></label>
-                <label class="uglevodi_procent">Углеводы, %: <br><input type="number" id="editCarbPercentage" min="0" max="100"></label>
+                <label class="belki_procent">Белки, %: <br><input type="number" id="editProteinPercentage"></label> <br>
+                <label class="jiri_procent">Жиры, %: <br><input type="number" id="editFatPercentage"></label>
+                <label class="uglevodi_procent">Углеводы, %: <br><input type="number" id="editCarbPercentage"></label>
             </div>
-            <button type="button" id="saveEditedBJU">Сохранить</button>
+            <button type="button" id="saveBtn">Сохранить</button>
         </div>
     </div>
 
