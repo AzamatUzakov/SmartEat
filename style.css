@@ -62,7 +62,7 @@ form label {
 }
 
 .goal_plan_level_assessment select {
-    width: 100% !important;
+    max-width: 300px; 
     border-radius: 7px;
     border: 1px solid #648179;
     font-size: 14px;
