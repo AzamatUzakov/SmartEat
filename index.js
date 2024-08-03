@@ -1,10 +1,46 @@
+function setupCustomSelect(selectId) {
+    const select = document.getElementById(selectId + 'Select');
+    const selectedOption = select.querySelector('.selected-option');
+    const optionsContainer = select.querySelector('.options');
+    const options = optionsContainer.querySelectorAll('span');
+
+    selectedOption.addEventListener('click', function() {
+        optionsContainer.style.display = optionsContainer.style.display === 'block' ? 'none' : 'block';
+    });
+
+    options.forEach(option => {
+        option.addEventListener('click', function() {
+            selectedOption.textContent = option.textContent;
+            optionsContainer.style.display = 'none';
+            const selectedValue = option.getAttribute('data-value');
+            
+            // Обновление значения в зависимости от ID
+            switch (selectId) {
+                case 'goal':
+                    document.getElementById('goal').value = selectedValue;
+                    break;
+                case 'workoutsPerWeek':
+                    document.getElementById('workoutsPerWeek').value = selectedValue;
+                    break;
+                case 'activityLevel':
+                    document.getElementById('activityLevel').value = selectedValue;
+                    break;
+                case 'pregnancyStatus':
+                    document.getElementById('pregnancyStatus').value = selectedValue;
+                    break;
+            }
+        });
+    });
+}
+
+setupCustomSelect('goal');
+setupCustomSelect('workoutsPerWeek');
+setupCustomSelect('activityLevel');
+setupCustomSelect('pregnancyStatus');
+
 document.querySelectorAll('input[name="gender"]').forEach(genderRadio => {
-    genderRadio.addEventListener('change', function() {
-        if (this.value === 'female') {
-            document.getElementById('pregnancyStatusContainer').style.display = 'block';
-        } else {
-            document.getElementById('pregnancyStatusContainer').style.display = 'none';
-        }
+    genderRadio.addEventListener('change', function () {
+        document.getElementById('pregnancyStatusContainer').style.display = this.value === 'female' ? 'block' : 'none';
     });
 });
 
@@ -16,7 +52,6 @@ function calculateBJU() {
     const user_target = document.getElementById('goal').value;
     const workout_week = parseInt(document.getElementById('workoutsPerWeek').value);
     const level_active = document.getElementById('activityLevel').value;
-    const fitnessLevel = document.getElementById('fitnessLevel').value; // Уровень физической подготовки
     const pregnancyStatus = document.querySelector('#pregnancyStatus').value;
 
     if (!user_gender || isNaN(user_height) || isNaN(user_weight) || isNaN(user_age) || isNaN(workout_week)) {
@@ -47,8 +82,16 @@ function calculateBJU() {
             activityFactor = 1.2;
             level_p.innerHTML = "<b>Сидячая работа, малоподвижный образ жизни</b>";
             break;
+        case 'low-low':
+            activityFactor = 1.37;
+            level_p.innerHTML = "<b>Сидячая работа, малоподвижный образ жизни</b>";
+            break;
         case 'medium':
             activityFactor = 1.55;
+            level_p.innerHTML = "<b>Сидячая работа, среднеактивный образ жизни</b>";
+            break;
+        case 'medium-medium':
+            activityFactor = 1.70;
             level_p.innerHTML = "<b>Сидячая работа, среднеактивный образ жизни</b>";
             break;
         case 'high':
@@ -59,27 +102,8 @@ function calculateBJU() {
             activityFactor = 1.2;
     }
 
-    // Корректировка активности по уровню физической подготовки
-    switch (fitnessLevel) {
-        case 'beginner':
-            activityFactor *= 1.0;
-            break;
-        case 'intermediate':
-            activityFactor *= 1.1;
-            break;
-        case 'advanced':
-            activityFactor *= 1.2;
-            break;
-        default:
-            activityFactor *= 1.0;
-    }
-
     // Корректировка по количеству тренировок
-    if (workout_week >= 5) {
-        activityFactor += 0.035 * workout_week; // 3.5% за тренировку
-    } else if (workout_week >= 3) {
-        activityFactor += 0.035 * workout_week; // 3.5% за тренировку
-    }
+    activityFactor += 0.035 * workout_week;
     workout_p.innerHTML = `<b>${workout_week} тренировки в неделю</b>`;
 
     let pregnancyFactor = 0;
@@ -99,10 +123,6 @@ function calculateBJU() {
         }
     }
 
-    // Отладочная информация
-    console.log(`Pregnancy Status: ${pregnancyStatus}`);
-    console.log(`Pregnancy Factor: ${pregnancyFactor}`);
-
     const tdee = bmr * (activityFactor + pregnancyFactor);
 
     let targetCalories;
@@ -112,11 +132,11 @@ function calculateBJU() {
             target_p.innerHTML = "<b>Поддерживать свою форму</b>";
             break;
         case 'lose':
-            targetCalories = tdee - 500;
+            targetCalories = tdee * 0.9;
             target_p.innerHTML = "<b>Похудеть (убрать жир)</b>";
             break;
         case 'gain':
-            targetCalories = tdee + 500;
+            targetCalories = tdee * 1.1;
             target_p.innerHTML = "<b>Набрать мышечную массу</b>";
             break;
         default:
@@ -212,4 +232,3 @@ document.getElementById('editCarbsPerKg').addEventListener('input', saveEditedBJ
 
 // Добавьте обработчики событий для кнопок расчета и сохранения
 document.getElementById('calculateBtn').addEventListener('click', calculateBJU);
-document.getElementById('saveBtn').addEventListener('click', saveEditedBJU);

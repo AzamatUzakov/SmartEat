@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Счетчик БЖУ</title>
     <link rel="stylesheet" href="./style.css">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -27,52 +30,59 @@
                 <label class="age_height_weight">Возраст, лет <br> <input type="number" id="age" required></label>
             </div>
             <label class="goal_plan_level_assessment">Цель: <br>
-                <select id="goal" required>
-                    <option value="maintain">Поддерживать свою форму</option>
-                    <option value="lose">Похудеть (убрать жир)</option>
-                    <option value="gain">Набрать мышечную массу</option>
-                </select>
+                <div id="goalSelect" class="custom-select">
+                    <div class="selected-option">Выберите цель <img src="./icon/free-icon-up-and-down-arrows-10119502 (1).png" alt=""></div>
+                    <div class="options">
+                        <span data-value="maintain">Поддерживать свою форму</span>
+                        <span data-value="lose">Похудеть (убрать жир)</span>
+                        <span data-value="gain">Набрать мышечную массу</span>
+                    </div>
+                </div>
+                <input type="hidden" id="goal" required>
             </label>
             <label class="goal_plan_level_assessment">Планируемое количество тренировок в неделю: <br>
-                <select id="workoutsPerWeek" required>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                </select>
-            </label>
-            <label class="goal_plan_level_assessment">Оцените ваш уровень физической подготовки: <br>
-                <select id="fitnessLevel" required>
-                    <option value="beginner">Новичок</option>
-                    <option value="intermediate">Тренированный</option>
-                    <option value="advanced">Спортсмен</option>
-                </select>
+                <div id="workoutsPerWeekSelect" class="custom-select">
+                    <div class="selected-option">Выберите количество тренировок <img src="./icon/free-icon-up-and-down-arrows-10119502 (1).png" alt=""></div>
+                    <div class="options">
+                        <span data-value="0">0</span>
+                        <span data-value="1">1</span>
+                        <span data-value="2">2</span>
+                        <span data-value="3">3</span>
+                        <span data-value="4">4</span>
+                        <span data-value="5">5</span>
+                        <span data-value="6">6</span>
+                        <span data-value="7">7</span>
+                    </div>
+                </div>
+                <input type="hidden" id="workoutsPerWeek" required>
             </label>
             <label class="goal_plan_level_assessment">Уровень активности: <br>
-                <select id="activityLevel" required>
-                    <option value="low">Сидячая работа, мало подвижный образ жизни</option>
-                    <option value="medium">Сидячая работа, среднеактивный образ жизни</option>
-                    <option value="high">Работа связана с физической нагрузкой, очень активный образ жизни</option>
-                </select>
+                <div id="activityLevelSelect" class="custom-select">
+                    <div class="selected-option">Выберите уровень активности <img src="./icon/free-icon-up-and-down-arrows-10119502 (1).png" alt=""></div>
+                    <div class="options">
+                        <span data-value="low">Cидячая работа, не требующая значительных физических нагрузок</span>
+                        <span data-value="low-low">Cлабый уровень активности</span>
+                        <span data-value="medium">Умеренный уровень активности</span>
+                        <span data-value="medium-medium">Тяжелая или трудоемкая активность</span>
+                        <span data-value="high">Экстремальный уровень</span>
+                    </div>
+                </div>
+                <input type="hidden" id="activityLevel" required>
             </label>
-            <div id="pregnancyStatusContainer" class="goal_plan_level_assessment" style="display:none;">
+            <div id="pregnancyStatusContainer" class="goal_plan_level_assessment">
                 Вы беременная или кормящая
-
-                <select id="pregnancyStatus">
-                    <option value="none">Не беременная / не кормящая</option>
-                    <option value="pregnant">Беременная</option>
-                    <option value="breastfeeding_1_6">Кормящая (1-6 мес)</option>
-                    <option value="breastfeeding_7_12">Кормящая (7-12 мес)</option>
-                </select>
+                <div id="pregnancyStatusSelect" class="custom-select">
+                    <div class="selected-option">Выберите статус беременности <img src="./icon/free-icon-up-and-down-arrows-10119502 (1).png" alt=""></div>
+                    <div class="options">
+                        <span data-value="none">Не беременная / не кормящая</span>
+                        <span data-value="pregnant">Беременная</span>
+                        <span data-value="breastfeeding_1_6">Кормящая (1-6 мес)</span>
+                        <span data-value="breastfeeding_7_12">Кормящая (7-12 мес)</span>
+                    </div>
+                </div>
+                <input type="hidden" id="pregnancyStatus">
             </div>
-            
-            
-            
-            <button class="result_btn" type="button" onclick="calculateBJU()">Рассчитать</button>
+            <button class="result_btn" type="button" id="calculateBtn" onclick="calculateBJU()">Рассчитать</button>
         </form>
     </div>
 
@@ -111,9 +121,9 @@
         <div id="editForm" style="display:none;">
             <h2>Редактирование БЖУ</h2>
             <div class="edit_box">
-                <label>Белки, гр   <br><input type="number" id="editProteinsPerKg"></label>
-                <label>Жиры, гр  <br><input type="number" id="editFatsPerKg"></label>
-                <label>Углеводы, гр  <br><input type="number" id="editCarbsPerKg"></label>
+                <label>Белки, гр <br><input type="number" id="editProteinsPerKg"></label>
+                <label>Жиры, гр <br><input type="number" id="editFatsPerKg"></label>
+                <label>Углеводы, гр <br><input type="number" id="editCarbsPerKg"></label>
             </div>
             <label class="kaloriy__">Калорийность плана, ккал: <br><input type="number" id="editCalories" /></label>
             <div class="edit_two_box">
@@ -121,11 +131,11 @@
                 <label class="jiri_procent">Жиры, %: <br><input type="number" id="editFatPercentage"></label>
                 <label class="uglevodi_procent">Углеводы, %: <br><input type="number" id="editCarbPercentage"></label>
             </div>
-            <button type="button" id="saveBtn">Сохранить</button>
+            <button type="button" id="calculateBtn">Сохранить</button>
         </div>
     </div>
 
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
 </body>
 
 </html>

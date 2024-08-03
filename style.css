@@ -3,7 +3,7 @@ body {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-    display:block;
+    display: block;
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -62,7 +62,7 @@ form label {
 }
 
 .goal_plan_level_assessment select {
-    max-width: 300px; 
+    width: 100% !important;
     border-radius: 7px;
     border: 1px solid #648179;
     font-size: 14px;
@@ -71,7 +71,7 @@ form label {
 }
 
 
-.result_container{
+.result_container {
     margin: 0 auto;
     width: 450px;
     background-color: #ebf5ff;
@@ -81,26 +81,33 @@ form label {
     margin-top: 10px;
 }
 
-.result_container h2{
+.result_container h2 {
     font-size: 18px
 }
-.lvl{
-font-size: 17px;
+
+.lvl {
+    font-size: 17px;
 }
-.level_p, .workout_p, .target_p{
+
+.level_p,
+.workout_p,
+.target_p {
     margin-top: -14px;
     font-size: 15px;
 }
-.bju_blocks, .humman_info{
+
+.bju_blocks,
+.humman_info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     font-size: 17px;
 }
-.result_btn{
+
+.result_btn {
     width: 50%;
-    text-align:center;
+    text-align: center;
     margin: 0 auto;
     background-color: #4CAF50;
     color: white;
@@ -112,7 +119,7 @@ font-size: 17px;
 }
 
 
-.edit_form_cont{
+.edit_form_cont {
     margin: 0 auto;
     width: 450px;
     background-color: whitesmoke;
@@ -124,13 +131,15 @@ font-size: 17px;
 
 }
 
-.edit_box, .edit_two_box{
+.edit_box,
+.edit_two_box {
     display: flex;
     align-items: center;
 
 }
-.kaloriy__ input{
-    max-width:100%;
+
+.kaloriy__ input {
+    max-width: 100%;
     border-radius: 7px;
     border: 1px solid #648179;
     font-size: 14px;
@@ -138,7 +147,9 @@ font-size: 17px;
     padding: 8px;
     font-weight: 400;
 }
-.edit_box input, .edit_two_box input{
+
+.edit_box input,
+.edit_two_box input {
     width: 70%;
     border-radius: 7px;
     border: 1px solid #648179;
@@ -148,6 +159,7 @@ font-size: 17px;
     font-weight: 400;
     margin-top: 3px;
 }
+
 form input,
 form select,
 button {
@@ -176,4 +188,71 @@ button:hover {
 #editForm label {
     display: block;
     margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+.custom-select {
+    position: relative;
+    width: 100%;
+
+}
+
+#goalSelect {
+    width: 100% !important;
+    border-radius: 7px;
+    border: 1px solid #ffffff;
+    font-size: 14px;
+    color: #648179;
+    font-weight: 400;
+}
+
+.custom-select .selected-option {
+    background-color: white !important;
+    border: 1px solid #648179;
+    padding: 8px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-select .options {
+    display: none;
+    position: absolute;
+    margin-top: 5px;
+    background-color: #fff !important;
+    border: 1px solid #648179;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+padding-bottom: 10px;
+border-radius: 10px;
+
+}
+
+.custom-select .options span {
+    display: block;
+   max-width: 100%;
+    margin-top: 5px;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+.custom-select .options span:hover {
+ color: black;
+ transition: .3s ease;
+ font-size: 15px;
+}
+
+#pregnancyStatusContainer {
+    display: none;
 }
